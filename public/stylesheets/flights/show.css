@@ -1,11 +1,24 @@
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
 }
 main div {
   display: flex;
+}
+
+button {
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: lightblue;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: rgb(2, 72, 96);
+  color: white;
+  cursor: pointer;
 }
 
 .flight-container {
@@ -13,6 +26,7 @@ main div {
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
+  margin: 16px 0;
 }
 
 .flight-header {
