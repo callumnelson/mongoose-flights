@@ -30,6 +30,9 @@ app.use(
   )
 )
 
+// add additional methods through override
+app.use(methodOverride('_method'))
+
 // mount imported routes
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
