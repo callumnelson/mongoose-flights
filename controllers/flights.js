@@ -5,7 +5,9 @@ const index = async (req, res) => {
 }
 
 const newFlight = async (req, res) => {
-
+  res.render('flights/new', {
+    title:'Add Flight'
+  })
 }
 
 const create = async (req, res) => {
