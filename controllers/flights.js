@@ -58,10 +58,37 @@ const show = async (req, res) => {
   }
 }
 
+const editFlight = async (req, res) => {
+  try {
+    // get data for current todo
+    const flight = await Flight.findById(req.params.flightId)
+    // render a view (edit view) 
+    res.render('flights/edit', {
+      flight,
+      title: 'Edit Flight'
+    })
+  } catch (err) {
+    console.log(err)
+    res.redirect('/flights')
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    const flight = await Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
+    res.redirect(`/flights/${flight._id}`)
+  } catch (err) {
+    console.log(err)
+    console.redirect('/flights')
+  }
+}
+
 export {
   index,
   newFlight as new,
   create,
   deleteFlight as delete,
-  show
+  show,
+  editFlight as edit,
+  update
 }

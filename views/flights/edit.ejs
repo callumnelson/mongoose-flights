@@ -1,0 +1,28 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/forms.css" />
+<%- include('../partials/nav') %>
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/flights/<%= flight._id %>/?_method=PUT" method="POST" autocomplete="off">
+    <label for="airline-input">Airline:</label>
+    <select name="airline" id="airline-input">
+      <option value="American" <%= flight.airline === 'American' ? 'selected' : '' %>>American</option>
+      <option value="Southwest" <%= flight.airline === 'Southwest' ? 'selected' : '' %>>Southwest</option>
+      <option value="United" <%= flight.airline === 'United' ? 'selected' : '' %>>United</option>
+    </select>
+    <label for="airport-input">Airport:</label>
+    <select name="airport" id="airport-input">
+      <option value="AUS" <%= flight.airport === 'AUS' ? 'selected' : '' %>>AUS</option>
+      <option value="DFW" <%= flight.airport === 'DFW' ? 'selected' : '' %>>DFW</option>
+      <option value="DEN" <%= flight.airport === 'DEN' ? 'selected' : '' %>>DEN</option>
+      <option value="LAX" <%= flight.airport === 'LAX' ? 'selected' : '' %>>LAX</option>
+      <option value="SAN" <%= flight.airport === 'SAN' ? 'selected' : '' %>>SAN</option>
+    </select>
+    <label for="flightNo-select">Flight Number:</label>
+    <input required type="number" name="flightNo" id="flightNo-input" min="10" max="9999" value="<%= flight.flightNo %>">
+    <label for="departs-input">Departure Date & Time:</label>
+    <input type="datetime-local" name="departs" id="departs-input" value="<%= flight.departs.getFullYear() %>-<%= flight.departs.getMonth() < 10 ? '0' + flight.departs.getMonth() : flight.departs.getMonth() %>-<%= flight.departs.getDate() < 10 ? '0' + flight.departs.getDate() : flight.departs.getDate()  %>T<%= flight.departs.getHours() < 10 ? '0' + flight.departs.getHours() : flight.departs.getHours()  %>:<%= flight.departs.getMinutes() < 10 ? '0' + flight.departs.getMinutes() : flight.departs.getMinutes()  %>">
+    <button type="submit">Update Info</button>
+  </form>
+</main>
+<%- include("../partials/footer") %>
