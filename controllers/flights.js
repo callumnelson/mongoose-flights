@@ -36,7 +36,14 @@ const create = async (req, res) => {
 }
 
 const deleteFlight = async (req, res) => {
-
+  try {
+    const deleted = await Flight.findByIdAndRemove(req.params.flightId)
+    console.log(deleted)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    res.redirect('/flights')
+  }
 }
 
 const show = async (req, res) => {
