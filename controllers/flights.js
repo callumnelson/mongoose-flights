@@ -11,7 +11,19 @@ const newFlight = async (req, res) => {
 }
 
 const create = async (req, res) => {
-
+  try {
+    // Get rid of property if it isn't defined so we can use default value
+    for (let key in req.body){
+      console.log(key, req.body[key])
+      if (req.body[key] === '') delete req.body[key]
+    }
+    console.log()
+  }catch(err){
+    console.log(err)
+  } finally {
+    res.redirect('/flights')
+  }
+}
 }
 
 const deleteFlight = async (req, res) => {
