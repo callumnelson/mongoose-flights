@@ -25,12 +25,9 @@ table td {
   min-width: 144px;
 }
 
-#list tr:nth-child(even) {
-  font-weight: bold;
-}
-
-#list tr:hover{
-  background-color:#e9f4f1e7;
+#list tr:nth-child(even){
+  color: white;
+  background-color: #424748;
 }
 
 #list a:visited{

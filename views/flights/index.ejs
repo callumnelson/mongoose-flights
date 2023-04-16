@@ -22,7 +22,7 @@
           <td><%= flight.airport %></td>
           <td><%= flight.flightNo %></td>
           <td><%= flight.departs.getMonth() %> / <%= flight.departs.getDate() %> / <%= flight.departs.getFullYear() %></td>
-          <td><%= flight.departs.getHours() %>:<%= flight.departs.getMinutes() %></td>
+          <td><%= flight.departs.getHours() %>:<%= flight.departs.getMinutes() < 10 ? '0' + flight.departs.getMinutes() : flight.departs.getMinutes()%></td>
           <td><a href="/flights/<%= flight._id %>">Details</a></td>
           <td>
             <form action="/flights/<%= flight._id %>?_method=DELETE"" method="POST" class="delete-form">
