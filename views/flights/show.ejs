@@ -1,10 +1,38 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/flights/forms.css">
+<link rel="stylesheet" href="/stylesheets/flights/show.css">
 
 <%- include('../partials/nav') %>
 
 <main>
-  <h1>Viewing information for flight: <%= flight.flightNo %></h1>
+  <div class="flight-container">
+    <div class="flight-header">
+      FLIGHT INFORMATION
+    </div>
+    <div class="flight-body">
+      <div class="airplane-image">
+        <img src="/assets/airplane.png" alt="airplane image">
+      </div>
+      <div class="flight-info">
+        <div class="airport">
+          <%= flight.airport %>
+        </div>
+        <div class="detail-wrapper">
+          <div class="flightNo">
+            Flight #:
+            <p><%= flight.flightNo %></p>
+          </div>
+          <div class="departs">
+            Departs @:
+            <p><%= flight.departs.getHours() %>:<%= flight.departs.getMinutes() < 10 ? '0' + flight.departs.getMinutes() : flight.departs.getMinutes()%></p>
+            <p><%= flight.departs.getMonth() %> / <%= flight.departs.getDate() %> / <%= flight.departs.getFullYear() %></p>
+          </div>
+        </div>
+      </div>
+      <div class="airline">
+        <%= flight.airline %>
+      </div>
+    </div>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

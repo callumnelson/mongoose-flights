@@ -1,0 +1,102 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main div {
+  display: flex;
+}
+
+.flight-container {
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.flight-header {
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.flight-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.airplane-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.airplane-image img {
+  transform: rotate(-90deg);
+  max-height: 250px;
+}
+
+.flight-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  padding: 0 16px;
+}
+
+.flightNo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  font-size: 24px;
+}
+
+.flightNo p {
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+}
+
+.airport {
+  display: flex;
+  font-size: 64px;
+}
+
+.detail-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.departs {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  font-size: 24px;
+}
+
+.departs p {
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.airline {
+  display: flex;
+  justify-content: center;
+  writing-mode:vertical-rl;
+  font-size: 48px;
+  margin: 0;
+  padding: 0 16px;
+}

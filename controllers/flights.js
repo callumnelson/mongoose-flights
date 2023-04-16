@@ -47,7 +47,15 @@ const deleteFlight = async (req, res) => {
 }
 
 const show = async (req, res) => {
-
+  try {
+    const flight = await Flight.findById(req.params.flightId)
+    res.render('flights/show', {
+      flight,
+      title: `Flight Details`
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export {
