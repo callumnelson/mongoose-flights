@@ -83,6 +83,17 @@ const update = async (req, res) => {
   }
 }
 
+const createTicket = async (req, res) => {
+  try {
+    const flight = await Flight.findById(req.params.flightId)
+    flight.tickets.push(req.body)
+    await flight.save()
+    res.redirect(`/flights/${flight._id}`)
+  } catch (err) {
+    
+  }
+}
+
 export {
   index,
   newFlight as new,
@@ -90,5 +101,6 @@ export {
   deleteFlight as delete,
   show,
   editFlight as edit,
-  update
+  update,
+  createTicket
 }
