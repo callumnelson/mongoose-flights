@@ -21,7 +21,7 @@
     <label for="flightNo-select">Flight Number:</label>
     <input required type="number" name="flightNo" id="flightNo-input" min="10" max="9999" value="<%= flight.flightNo %>">
     <label for="departs-input">Departure Date & Time:</label>
-    <input type="datetime-local" name="departs" id="departs-input" value="<%= flight.departs.getFullYear() %>-<%= flight.departs.getMonth() < 10 ? '0' + flight.departs.getMonth() : flight.departs.getMonth() %>-<%= flight.departs.getDate() < 10 ? '0' + flight.departs.getDate() : flight.departs.getDate()  %>T<%= flight.departs.getHours() < 10 ? '0' + flight.departs.getHours() : flight.departs.getHours()  %>:<%= flight.departs.getMinutes() < 10 ? '0' + flight.departs.getMinutes() : flight.departs.getMinutes()  %>">
+    <input type="datetime-local" name="departs" id="departs-input" value="<%= flight.departs.toISOString().slice(0, 16) %>">
     <button type="submit">Update Info</button>
   </form>
 </main>
