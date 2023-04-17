@@ -3,7 +3,6 @@ import { Flight } from "../models/flight.js"
 const index = async (req, res) => {
   try {
     const flights = await Flight.find({})
-    console.log(flights)
     res.render('flights/index', {
       title: 'All Flights',
       flights
@@ -24,7 +23,6 @@ const create = async (req, res) => {
   try {
     // Get rid of property if it isn't defined so we can use default value
     for (let key in req.body){
-      console.log(key, req.body[key])
       if (req.body[key] === '') delete req.body[key]
     }
     await Flight.create(req.body)
@@ -38,7 +36,6 @@ const create = async (req, res) => {
 const deleteFlight = async (req, res) => {
   try {
     const deleted = await Flight.findByIdAndRemove(req.params.flightId)
-    console.log(deleted)
   } catch (err) {
     console.log(err)
   } finally {
@@ -79,7 +76,7 @@ const update = async (req, res) => {
     res.redirect(`/flights/${flight._id}`)
   } catch (err) {
     console.log(err)
-    console.redirect('/flights')
+    res.redirect('/flights')
   }
 }
 
