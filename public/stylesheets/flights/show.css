@@ -33,9 +33,12 @@ main div {
   font-size: 20px;
 }
 
-button:hover {
+#edit-flight-btn:hover, #add-ticket-btn:hover {
   background-color: rgb(2, 72, 96);
   color: white;
+}
+
+button:hover {
   cursor: pointer;
 }
 
@@ -135,6 +138,7 @@ button:hover {
 
 table {
   font-size: 20px;
+  margin-top: 20px;
 }
 
 table thead th {
@@ -156,20 +160,7 @@ table td {
   color: #424748;
 }
 
-#list td:nth-child(4){
-  min-width: 144px;
-}
-
-#list tr:nth-child(even){
+#tickets-table tr:nth-child(even){
   color: white;
   background-color: #424748;
-}
-
-#list a:visited{
-  color: #424748;
-
-}
-
-#list a:hover {
-  background-color: white;
 }

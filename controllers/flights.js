@@ -75,7 +75,7 @@ const editFlight = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const flight = await Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
+    const flight = await Flight.findByIdAndUpdate(req.params.flightId, { $set: req.body }, {new: true})
     res.redirect(`/flights/${flight._id}`)
   } catch (err) {
     console.log(err)
@@ -94,6 +94,18 @@ const createTicket = async (req, res) => {
   }
 }
 
+const deleteTicket = async (req, res) => {
+  try {
+    const flight = await Flight.findById(req.params.flightId)
+    flight.tickets.id(req.params.ticketId).deleteOne()
+    await flight.save()
+  } catch (err) {
+    console.log(err)
+  } finally {
+    res.redirect(`/flights/${req.params.flightId}`)
+  }
+}
+
 export {
   index,
   newFlight as new,
@@ -102,5 +114,6 @@ export {
   show,
   editFlight as edit,
   update,
-  createTicket
+  createTicket,
+  deleteTicket
 }

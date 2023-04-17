@@ -49,7 +49,7 @@
     <button id="add-ticket-btn" type="submit">Add ticket</button>
   </form>
   <% if (flight.tickets.length) { %>
-    <table>
+    <table id="tickets-table">
       <thead>
         <tr>
           <th>Purchase Date</th>
@@ -65,7 +65,7 @@
             <td><%= ticket.seat %></td>
             <td><%= ticket.price %></td>
             <td>
-              <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %> ?_method=DELETE"" method="POST" class="delete-form">
+              <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE"" method="POST" class="delete-form">
                 <button type="submit">X</button>
               </form>
             </td>
