@@ -35,16 +35,33 @@
         <%= flight.airline %>
       </div>
     </div>
+    <div class="meal-wrapper">
+    <% if (flight.meals.length) { %>
+      <p>Available Meals:&nbsp;</p>
+      <% flight.meals.forEach( (meal, i) => { %>
+        <p>
+          <%= i > 0 ? ', ' : '' %>
+          <%= meal.name %>
+        </p>
+      <% }) %>
+    <% } else { %>
+      <p>No meals available</p>  
+    <% } %>
+    </div>
   </div>
   <h2>Add Meals to Flight:</h2>
-  <form id="add-meal-to-cast" action="/flights/<%= flight._id %>/meals" method="POST">
-    <select name="mealId">
-      <% meals.forEach(meal => { %>
-        <option value="<%= meal._id %>"><%= meal.name %></option>
-      <% }) %>
-    </select>
-    <button type="submit">Add to Flight</button>
-  </form>
+  <% if (meals.length) { %>
+    <form id="add-meal-to-cast" action="/flights/<%= flight._id %>/meals" method="POST">
+      <select name="mealId">
+        <% meals.forEach(meal => { %>
+          <option value="<%= meal._id %>"><%= meal.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add to Flight</button>
+    </form>
+  <% } else { %>
+    <p>No meals available to add</p>
+  <% } %>
   <h2>Tickets</h2>
   <form 
     id="add-ticket-form"

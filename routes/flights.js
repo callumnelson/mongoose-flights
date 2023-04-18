@@ -19,8 +19,11 @@ router.get('/:flightId/edit', flightsCtrl.edit)
 // POST localhost:3000/flights
 router.post('/', flightsCtrl.create)
 
-// POST localhost:3000/flights/:movieId/tickets
+// POST localhost:3000/flights/:flightId/tickets
 router.post('/:flightId/tickets', flightsCtrl.createTicket)
+
+// POST localhost:3000/flights/:flightId/meals
+router.post('/:flightId/meals', flightsCtrl.addMealToFlight)
 
 // PUT localhost:3000/flights/:flightId
 router.put('/:flightId', flightsCtrl.update)

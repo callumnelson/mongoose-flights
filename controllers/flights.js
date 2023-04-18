@@ -47,8 +47,8 @@ const deleteFlight = async (req, res) => {
 const show = async (req, res) => {
   try {
     const flight = await Flight.findById(req.params.flightId)
-    const availMeals = await Meal.find({_id: {$nin: flight.meals}})
     flight.populate('meals')
+    const availMeals = await Meal.find({_id: {$nin: flight.meals}})
     res.render('flights/show', {
       flight,
       title: `Flight Details`,
@@ -107,6 +107,18 @@ const deleteTicket = async (req, res) => {
   }
 }
 
+const addMealToFlight = async (req, res) => {
+  try {
+    const flight = await Flight.findById(req.params.flightId)
+    flight.meals.push(req.body.mealId)
+    await flight.save()
+    res.redirect(`/flights/${flight._id}`)
+  } catch (err) {
+    console.log(err)
+    res.redirect('/flights')
+  } 
+}
+
 export {
   index,
   newFlight as new,
@@ -116,5 +128,6 @@ export {
   editFlight as edit,
   update,
   createTicket,
-  deleteTicket
+  deleteTicket,
+  addMealToFlight
 }
