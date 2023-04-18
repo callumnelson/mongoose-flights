@@ -14,7 +14,7 @@ main div {
   font-size: 20px;
 }
 
-#add-ticket-form * {
+#add-ticket-form *, #add-meal-to-cast * {
   padding: 5px;
   border-radius: 5px;
   font-size: 20px;

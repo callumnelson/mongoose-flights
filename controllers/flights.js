@@ -1,4 +1,5 @@
 import { Flight } from "../models/flight.js"
+import { Meal } from "../models/meal.js"
 
 const index = async (req, res) => {
   try {
@@ -46,9 +47,12 @@ const deleteFlight = async (req, res) => {
 const show = async (req, res) => {
   try {
     const flight = await Flight.findById(req.params.flightId)
+    const availMeals = await Meal.find({_id: {$nin: flight.meals}})
+    flight.populate('meals')
     res.render('flights/show', {
       flight,
-      title: `Flight Details`
+      title: `Flight Details`,
+      meals: availMeals
     })
   } catch (err) {
     console.log(err)

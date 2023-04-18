@@ -2,6 +2,7 @@ import { Meal } from "../models/meal.js"
 
 const newMeal = async (req, res) => {
   const meals = await Meal.find({})
+  console.log(meals, '<<<<< MEALS')
   res.render('meals/new', {
     title:'Add Meal',
     meals
