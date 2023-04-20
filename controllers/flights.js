@@ -47,7 +47,7 @@ const deleteFlight = async (req, res) => {
 const show = async (req, res) => {
   try {
     const flight = await Flight.findById(req.params.flightId)
-    flight.populate('meals')
+    .populate('meals')
     const availMeals = await Meal.find({_id: {$nin: flight.meals}})
     res.render('flights/show', {
       flight,
